@@ -14,25 +14,26 @@ public class CourseService {
 	@Autowired
 	private CourseRepository courseRepository;
 	
-	public List<Course> getAllCourses() {
+	public List<Course> getAllCourses(String topicId) {
 		List<Course> topics = new ArrayList<>();
-		courseRepository.findAll()
+		courseRepository.findByTopicId(topicId)
 			.forEach(topics::add);
 		return topics;
 	}
 	
 	public Course getCourse(String id) {
+	
 		return courseRepository.findById(id).stream().findFirst().get();
 	}
 
-	public void addCourse(Course topic) {
-		courseRepository.save(topic);
+	public void addCourse(Course course) {
+		courseRepository.save(course);
 		
 	}
 	
 
-	public void updateCourse(String id, Course topic) {
-		courseRepository.save(topic);
+	public void updateCourse(Course course) {
+		courseRepository.save(course);
 		
 	}
 
