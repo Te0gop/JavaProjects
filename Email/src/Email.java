@@ -33,7 +33,6 @@ public class Email {
     }
 
     // Ask for the department
-
     public String setDepartment() {
 
         System.out.print("DEPARTMENT CODES\n1 for Sales\n2 for Development\n3 for Accounting\n0 for none\nEnter department code: ");
@@ -46,7 +45,6 @@ public class Email {
     }
 
     // Generate random password
-
     private String randomPassword(int length) {
         String passwordSet = "ABCDEFGHIJKLMOPQRSTUVWXYZ0123456789!@#$";
         char[] password = new char[length];
