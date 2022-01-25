@@ -14,7 +14,6 @@ public class Session {
     private String session_description;
     private Integer session_length;
 
-    //many-to-many relationship; adding foreign key
     @ManyToMany
     @JoinTable(
             name = "session_speakers",
