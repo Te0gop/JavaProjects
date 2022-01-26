@@ -1,6 +1,6 @@
 package com.spring.project.demo.controller;
 
-import com.spring.project.demo.models.Session;
+import com.spring.project.demo.models.Sessions;
 import com.spring.project.demo.repositories.SessionRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,19 +17,19 @@ public class SessionsController {
     private SessionRepository sessionRepository;
 
     @GetMapping
-    public List<Session> list() {
+    public List<Sessions> list() {
         return sessionRepository.findAll();
     }
 
     @GetMapping
     @RequestMapping("{id}")
-    public Session get(@PathVariable Long id) {
+    public Sessions get(@PathVariable Long id) {
         return sessionRepository.getById(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Session create(@RequestBody final Session session) {
+    public Sessions create(@RequestBody final Sessions session) {
         return sessionRepository.saveAndFlush(session);
     }
 
@@ -40,8 +40,8 @@ public class SessionsController {
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.PUT)
-    public Session update(@PathVariable Long id, @RequestBody Session session) {
-        Session existingSession = sessionRepository.getById(id);
+    public Sessions update(@PathVariable Long id, @RequestBody Sessions session) {
+        Sessions existingSession = sessionRepository.getById(id);
         BeanUtils.copyProperties(session, existingSession, "session_id");
         return sessionRepository.saveAndFlush(existingSession);
     }

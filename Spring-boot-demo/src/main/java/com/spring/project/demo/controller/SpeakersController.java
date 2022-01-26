@@ -1,6 +1,6 @@
 package com.spring.project.demo.controller;
 
-import com.spring.project.demo.models.Speaker;
+import com.spring.project.demo.models.Speakers;
 import com.spring.project.demo.repositories.SpeakerRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,19 +17,19 @@ public class SpeakersController {
     private SpeakerRepository speakerRepository;
 
     @GetMapping
-    public List<Speaker> list() {
+    public List<Speakers> list() {
         return speakerRepository.findAll();
     }
 
     @GetMapping
     @RequestMapping("{id}")
-    public Speaker get(@PathVariable Long id) {
+    public Speakers get(@PathVariable Long id) {
         return speakerRepository.getById(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Speaker create(@RequestBody final Speaker speaker) {
+    public Speakers create(@RequestBody final Speakers speaker) {
         return speakerRepository.saveAndFlush(speaker);
     }
 
@@ -40,8 +40,8 @@ public class SpeakersController {
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.PUT)
-    public Speaker update(@PathVariable Long id, @RequestBody Speaker speaker) {
-        Speaker existingSpeaker = speakerRepository.getById(id);
+    public Speakers update(@PathVariable Long id, @RequestBody Speakers speaker) {
+        Speakers existingSpeaker = speakerRepository.getById(id);
         BeanUtils.copyProperties(speaker, existingSpeaker, "speaker_id");
         return speakerRepository.saveAndFlush(existingSpeaker);
     }

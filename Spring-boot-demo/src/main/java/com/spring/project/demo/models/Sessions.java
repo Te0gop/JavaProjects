@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity(name = "sessions")
-public class Session {
+public class Sessions {
 
     // adding primary key
     @Id
@@ -19,9 +19,9 @@ public class Session {
             name = "session_speakers",
             joinColumns = @JoinColumn(name = "session_id"),
             inverseJoinColumns = @JoinColumn(name = "speaker_id"))
-    private List<Speaker> speakers;
+    private List<Speakers> speakers;
 
-    public Session() {
+    public Sessions() {
 
     }
 
@@ -57,11 +57,11 @@ public class Session {
         this.session_length = session_length;
     }
 
-    public List<Speaker> getSpeakers() {
+    public List<Speakers> getSpeakers() {
         return speakers;
     }
 
-    public void setSpeakers(List<Speaker> speakers) {
+    public void setSpeakers(List<Speakers> speakers) {
         this.speakers = speakers;
     }
 }

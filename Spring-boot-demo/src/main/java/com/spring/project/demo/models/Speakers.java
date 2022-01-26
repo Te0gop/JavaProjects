@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity(name = "speakers")
-public class Speaker {
+public class Speakers {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,9 +23,9 @@ public class Speaker {
     private byte[] speaker_photo;
 
     @ManyToMany(mappedBy = "speakers")
-    private List<Session> sessions;
+    private List<Sessions> sessions;
 
-    public Speaker() {
+    public Speakers() {
 
     }
 
@@ -77,11 +77,11 @@ public class Speaker {
         this.speaker_bio = speaker_bio;
     }
 
-    public List<Session> getSessions() {
+    public List<Sessions> getSessions() {
         return sessions;
     }
 
-    public void setSessions(List<Session> sessions) {
+    public void setSessions(List<Sessions> sessions) {
         this.sessions = sessions;
     }
 
