@@ -23,7 +23,7 @@ public class SpeakersController {
 
     @GetMapping
     @RequestMapping("{id}")
-    public Speakers get(@PathVariable Long id) {
+    public Speakers get(@PathVariable Integer id) {
         return speakerRepository.getById(id);
     }
 
@@ -34,13 +34,13 @@ public class SpeakersController {
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable Integer id) {
         //Also need to check for children records before deleting.
         speakerRepository.deleteById(id);
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.PUT)
-    public Speakers update(@PathVariable Long id, @RequestBody Speakers speaker) {
+    public Speakers update(@PathVariable Integer id, @RequestBody Speakers speaker) {
         Speakers existingSpeaker = speakerRepository.getById(id);
         BeanUtils.copyProperties(speaker, existingSpeaker, "speaker_id");
         return speakerRepository.saveAndFlush(existingSpeaker);
