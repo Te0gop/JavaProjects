@@ -1,1 +1,1 @@
-# JavaProjects
+# Exercising projects with Spring
