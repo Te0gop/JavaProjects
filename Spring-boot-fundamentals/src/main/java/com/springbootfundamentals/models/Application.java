@@ -7,7 +7,7 @@ public class Application {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "application_io")
+    @Column(name = "application_id")
     private Integer id;
 
     @Column(name = "app_name", nullable = false)
