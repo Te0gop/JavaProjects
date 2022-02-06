@@ -1,5 +1,7 @@
 package com.jpa.conference.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
@@ -16,6 +18,7 @@ public class Registration {
     @NotEmpty
     private String name;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "registration", cascade = CascadeType.ALL)
     private List<Course> courses = new ArrayList<>();
 
