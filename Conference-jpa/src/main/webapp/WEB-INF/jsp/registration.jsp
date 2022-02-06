@@ -19,7 +19,7 @@
             color: #ff0000;
         }
 
-        .errorblock {
+        .error's {
             color: #000;
             background-color: #ffEEEE;
             border: 3px solid #ff0000;
@@ -41,8 +41,8 @@
         </div>
 
         <form:form modelAttribute="registration">
-            <form:errors path="*" cssClass="errorblock" element="div" />
-            <label for="textinput1">
+            <form:errors path="*" cssClass="error's" element="div" />
+            <label for="texting1">
                 Enter Registration:
             </label>
             <form:input path="name" cssErrorClass="error" />
