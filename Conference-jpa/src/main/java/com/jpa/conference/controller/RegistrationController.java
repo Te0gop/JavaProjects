@@ -1,6 +1,7 @@
 package com.jpa.conference.controller;
 
 import com.jpa.conference.model.Registration;
+import com.jpa.conference.model.RegistrationReport;
 import com.jpa.conference.service.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,11 +25,18 @@ public class RegistrationController {
         return "registration";
     }
 
+    @GetMapping("registration-reports")
+    public @ResponseBody
+    List<RegistrationReport> getRegistrationReports() {
+         List<RegistrationReport> registrationsReports = registrationService.findAllReports();
+         return registrationsReports;
+    }
+
     @GetMapping("registrations")
     public @ResponseBody
     List<Registration> getRegistration() {
-         List<Registration> registrations = registrationService.findAll();
-         return registrations;
+        List<Registration> registrations = registrationService.findAll();
+        return registrations;
     }
 
     @PostMapping("registration")

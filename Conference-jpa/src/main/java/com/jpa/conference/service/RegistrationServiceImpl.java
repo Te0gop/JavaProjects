@@ -3,6 +3,7 @@ package com.jpa.conference.service;
 
 import com.jpa.conference.model.Course;
 import com.jpa.conference.model.Registration;
+import com.jpa.conference.model.RegistrationReport;
 import com.jpa.conference.repository.CourseRepository;
 import com.jpa.conference.repository.CourseRepositoryImpl;
 import com.jpa.conference.repository.RegistrationRepository;
@@ -35,5 +36,10 @@ public class RegistrationServiceImpl implements RegistrationService {
     @Override
     public List<Registration> findAll() {
         return registrationRepository.findAll();
+    }
+
+    @Override
+    public List<RegistrationReport> findAllReports() {
+        return registrationRepository.findAllReports();
     }
 }
