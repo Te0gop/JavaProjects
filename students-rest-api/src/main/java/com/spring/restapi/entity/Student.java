@@ -1,33 +1,39 @@
 package com.spring.restapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Table(name = "students")
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 public class Student {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column
+    @Column(name = "first_name")
     private String firstName;
+    @Column(name = "last_name")
     private String lastName;
+    @Column(name = "age")
     private int age;
+    @Column(name = "email")
     private String email;
 
-    @OneToMany
-    @JoinTable(name = "lectures")
-    private List<Lecture> lectures;
+//    @OneToMany
+//    @JoinTable(name = "lectures")
+//    @JsonIgnoreProperties("students")
+//    private List<Lecture> lectures;
 
-    public Student(Long id, String firstName, String lastName, int age, String email, List<Lecture> lectures) {
+    public Student(Long id, String firstName, String lastName, int age, String email) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.email = email;
-        this.lectures = lectures;
     }
 
     public Student() {}
@@ -72,11 +78,5 @@ public class Student {
         this.email = email;
     }
 
-    public List<Lecture> getLectures() {
-        return lectures;
-    }
 
-    public void setLectures(List<Lecture> lectures) {
-        this.lectures = lectures;
-    }
 }
