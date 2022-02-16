@@ -23,10 +23,10 @@ public class Student {
     @Column(name = "email")
     private String email;
 
-//    @OneToMany
-//    @JoinTable(name = "lectures")
-//    @JsonIgnoreProperties("students")
-//    private List<Lecture> lectures;
+    @OneToMany
+    @JoinTable(name = "lectures")
+    @JsonIgnoreProperties("students")
+    private List<Lecture> lectures;
 
     public Student(Long id, String firstName, String lastName, int age, String email) {
         this.id = id;

@@ -30,9 +30,14 @@ public class StudentController {
         return studentService.getStudentById(id);
     }
 
-    @PostMapping
+    @PostMapping("/{id}")
     public ResponseEntity<Student> addStudent(@RequestBody Student student) {
         return new ResponseEntity<>(studentService.addStudent(student), HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Student> updateStudent(@PathVariable("id") Long id, @RequestBody Student student) {
+        return new ResponseEntity<>(studentService.updateStudent(student, id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
