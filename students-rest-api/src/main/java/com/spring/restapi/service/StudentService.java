@@ -13,6 +13,7 @@ public class StudentService {
 
     StudentRepository studentRepository;
 
+    //Instead @Autowired
     public StudentService(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
@@ -28,6 +29,7 @@ public class StudentService {
     public Student getStudentById(Long id) {
         return studentRepository.getById(id);
     }
+
     public void deleteStudent(Long id) {
         studentRepository.deleteById(id);
     }
