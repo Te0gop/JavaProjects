@@ -22,6 +22,7 @@ public class Teacher {
 
     @OneToMany
     @JoinTable(name = "lectures")
+    @JsonIgnoreProperties("teachers")
     private List<Lecture> lectures;
 
     public Teacher(Long id, String firstName, String lastName, int age, String degree, List<Lecture> lectures) {

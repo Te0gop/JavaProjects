@@ -1,6 +1,7 @@
 package com.spring.restapi.controller;
 
 import com.spring.restapi.entity.Lecture;
+import com.spring.restapi.entity.Student;
 import com.spring.restapi.service.LectureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -41,5 +42,10 @@ public class LectureController {
     public ResponseEntity<Lecture> deleteLectureById(@PathVariable("id") Long id) {
         lectureService.deleteLectureById(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+    
+    @PatchMapping("/{id}")
+    public ResponseEntity<Lecture> patchLecture(@PathVariable("id") Long id, @RequestBody Lecture lecture) {
+        return new ResponseEntity<>(lectureService.patchLecture(id, lecture), HttpStatus.OK);
     }
 }

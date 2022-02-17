@@ -1,7 +1,9 @@
 package com.spring.restapi.service;
 
 import com.spring.restapi.entity.Lecture;
+import com.spring.restapi.entity.Student;
 import com.spring.restapi.repository.LectureRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,5 +40,12 @@ public class LectureService {
     public void deleteLectureById(Long id) {
         lectureRepository.findById(id).orElseThrow();
         lectureRepository.deleteById(id);
+    }
+
+    public Lecture patchLecture(Long id, Lecture lecture) {
+        Lecture existingLecture = lectureRepository.findById(id).orElseThrow();
+
+        BeanUtils.copyProperties(lecture, existingLecture, "id");
+        return lectureRepository.save(existingLecture);
     }
 }

@@ -40,4 +40,10 @@ public class TeacherController {
         teacherService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Teacher> patchTeacher(@PathVariable("id") Long id, @RequestBody Teacher teacher) {
+        return new ResponseEntity<>(teacherService.patchTeacher(id, teacher), HttpStatus.OK);
+    }
+
 }

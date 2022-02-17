@@ -1,8 +1,10 @@
 package com.spring.restapi.service;
 
+import com.fasterxml.jackson.databind.util.BeanUtil;
 import com.spring.restapi.entity.Student;
 import com.spring.restapi.entity.Teacher;
 import com.spring.restapi.repository.TeacherRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,5 +41,11 @@ public class TeacherService {
     public void deleteById(Long id) {
         teacherRepository.findById(id).orElseThrow();
         teacherRepository.deleteById(id);
+    }
+
+    public Teacher patchTeacher(Long id, Teacher teacher) {
+        Teacher existingTeacher = teacherRepository.findById(id).orElseThrow();
+        BeanUtils.copyProperties(teacher, existingTeacher, "id");
+        return teacherRepository.save(existingTeacher);
     }
 }

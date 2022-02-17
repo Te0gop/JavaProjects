@@ -17,6 +17,7 @@ public class Lecture {
     private int duration;
 
     @ManyToOne
+    @JsonIgnoreProperties("lectures")
     private Teacher teacher;
 
     public Lecture(Long id, String lectureName, int duration, Teacher teacher) {
