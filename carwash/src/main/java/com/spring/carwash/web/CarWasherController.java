@@ -3,6 +3,7 @@ package com.spring.carwash.web;
 import com.spring.carwash.model.Car;
 import com.spring.carwash.model.Driver;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import java.util.List;
 public class CarWasherController {
 
     @RequestMapping("/cars")
+    @ResponseBody
     public List<Car> getCars() {
         List<Car> cars = new ArrayList<>();
 
