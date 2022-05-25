@@ -5,6 +5,7 @@ import com.spring.carwash.model.Driver;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,5 +31,13 @@ public class CarWasherController {
         cars.add(car3);
 
         return cars;
+    }
+
+    @RequestMapping("/cache")
+    public ModelAndView cacheBustingTest() {
+        ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.setViewName("Cash busting test");
+        return modelAndView;
     }
 }
