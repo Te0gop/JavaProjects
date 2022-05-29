@@ -1,12 +1,22 @@
 package com.spring.carwash.model;
 
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
 public class Car {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
     private String model;
+
     private String color;
+
+    @ManyToOne
     private Driver driver;
+
     private int year;
 
     public Car() {
