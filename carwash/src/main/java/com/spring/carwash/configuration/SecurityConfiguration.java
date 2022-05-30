@@ -17,6 +17,13 @@ public class SecurityConfiguration {
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults());
+
+        http
+                .formLogin(form -> form
+                        .loginPage("/login")
+                        .loginProcessingUrl("/login")
+                        .failureForwardUrl("/login.html?loginFailed=true"));
+
         return http.build();
     }
 

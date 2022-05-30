@@ -14,4 +14,12 @@ public class MainController {
         modelAndView.setViewName("index");
         return modelAndView;
     }
+
+    @RequestMapping(value = "/login")
+    public ModelAndView login() {
+        ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.setViewName("login");
+        return modelAndView;
+    }
 }
