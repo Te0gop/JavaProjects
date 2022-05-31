@@ -2,10 +2,14 @@ package com.spring.carwash.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.web.SecurityFilterChain;
+
+import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 public class SecurityConfiguration {
@@ -16,15 +20,22 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests((authz) -> authz
                         .anyRequest().authenticated()
                 )
-                .httpBasic(Customizer.withDefaults());
-
-        http
-                .formLogin(form -> form
-                        .loginPage("/login")
-                        .loginProcessingUrl("/login")
-                        .failureForwardUrl("/login.html?loginFailed=true"));
-
+                .httpBasic(withDefaults());
         return http.build();
+
+
+//        http
+//                .formLogin(form -> form
+//                        .loginPage("/login")
+//                        .loginProcessingUrl("/login")
+//                        .failureForwardUrl("/login.html?loginFailed=true"));
+//
+//        return http.build();
     }
+    @Bean
+    public WebSecurityCustomizer webSecurityCustomizer() {
+        return (web) -> web.ignoring().antMatchers("/ignore1", "/ignore2");
+    }
+
 
 }
